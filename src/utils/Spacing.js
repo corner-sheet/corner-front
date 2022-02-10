@@ -1,0 +1,68 @@
+export default {
+	font: {
+		primary: "Roboto",
+		secondary: "Open Sans",
+	},
+	fontSize: {
+		xs: 12,
+		sm: 14,
+		md: 16,
+		lg: 18,
+		xl: 20,
+		xxl: 24,
+	},
+	fontWeight: {
+		light: "300",
+		normal: "400",
+		medium: "500",
+		bold: "700",
+	},
+	lineHeight: {
+		none: 1,
+		tight: 1.25,
+		snug: 1.375,
+		normal: 1.5,
+		relaxed: 1.625,
+		loose: 2,
+	},
+	letterSpacing: {
+		tighter: "-0.05em",
+		tight: "-0.025em",
+	},
+	spacing: {
+		xs: "0.25rem",
+		sm: "0.5rem",
+		md: "1rem",
+		lg: "1.5rem",
+		xl: "2rem",
+		xxl: "3rem",
+	},
+	borderRadius: {
+		sm: "0.25rem",
+		md: "0.5rem",
+		lg: "0.75rem",
+		xl: "1rem",
+		xxl: "1.5rem",
+	},
+	borderWidth: {
+		sm: "0.125rem",
+		md: "0.25rem",
+		lg: "0.5rem",
+		xl: "1rem",
+		xxl: "2rem",
+	},
+	boxShadow: {
+		sm: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+		lg: "0 3px 6px 0 rgba(0, 0, 0, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.06)",
+		xl: "0 10px 20px 0 rgba(0, 0, 0, 0.1), 0 10px 20px 0 rgba(0, 0, 0, 0.06)",
+		xxl: "0 25px 50px 0 rgba(0, 0, 0, 0.1), 0 25px 50px 0 rgba(0, 0, 0, 0.06)",
+	},
+	zIndex: {
+		xs: 10,
+		sm: 20,
+		md: 30,
+		lg: 40,
+		xl: 50,
+		xxl: 60,
+	},
+};
