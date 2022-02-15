@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { navigationRef } from './SupportNavigator';
-import { TabNavigator, IntroStackScreen } from './RootNavigator';
+import { TabNavigator, IntroStackScreen, AuthStackScreen } from './RootNavigator';
 //Deep Link
 import { Linking } from 'react-native';
 import { urlRedirect } from '../utils/Tools';
@@ -29,8 +29,9 @@ export const AppNavigator = () => {
   }, []);
   return (
     <NavigationContainer ref={navigationRef}>
-      {isFirstOpen && <IntroStackScreen />}
-      {!isFirstOpen && <TabNavigator />}
+      <AuthStackScreen />
+      {/* {isFirstOpen && <IntroStackScreen />}
+      {!isFirstOpen && <TabNavigator />} */}
     </NavigationContainer>
   );
 };

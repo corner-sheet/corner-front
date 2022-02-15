@@ -5,6 +5,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Colors from '../utils/Colors';
 import { IntroScreen } from '../screens/IntroScreen';
+import { SignUpScreen } from '../screens/SignUpScreen';
 import { LoginScreen } from '../screens/LoginScreen';
 import { HomeScreen } from '../screens/HomeScreen';
 import { SelectFavoriteMoodScreen } from '../screens/SelectFavoriteMoodScreen';
@@ -32,6 +33,7 @@ export const IntroStackScreen = () => (
 const AuthStack = createStackNavigator();
 export const AuthStackScreen = () => (
   <AuthStack.Navigator>
+    <AuthStack.Screen name='Signup' component={SignUpScreen} />
     <AuthStack.Screen name='Login' component={LoginScreen} />
     <AuthStack.Screen name='SelectFavoriteMood' component={SelectFavoriteMoodScreen} />
   </AuthStack.Navigator>
