@@ -110,17 +110,14 @@ export const ProfileStackScreen = () => (
 const HomeStack = createStackNavigator();
 export const HomeStackScreen = () => (
   <HomeStack.Navigator
-    screenOptions={{
-      headerShown: false,
-    }}
   >
     <HomeStack.Screen
       name='Home'
       component={HomeScreen}
     />
+    <HomeStack.Screen name='Publish' component={PublishScreen} />
     <HomeStack.Screen name='Detail' component={DetailScreen} />
     <HomeStack.Screen name='MapView' component={MapViewScreen} />
-    <HomeStack.Screen name='Search' component={SearchScreen} />
     <HomeStack.Screen name='Post' component={PostStackScreen} />
   </HomeStack.Navigator>
 );

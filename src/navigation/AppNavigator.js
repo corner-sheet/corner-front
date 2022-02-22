@@ -29,7 +29,8 @@ export const AppNavigator = () => {
   }, []);
   return (
     <NavigationContainer ref={navigationRef}>
-      <AuthStackScreen />
+      {/* <AuthStackScreen /> */}
+      <TabNavigator />
       {/* {isFirstOpen && <IntroStackScreen />}
       {!isFirstOpen && <TabNavigator />} */}
     </NavigationContainer>
