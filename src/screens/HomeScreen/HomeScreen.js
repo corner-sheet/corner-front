@@ -3,6 +3,7 @@ import { SafeAreaView, Text, StyleSheet, useColorScheme } from 'react-native';
 import Spacing from '../../utils/Spacing';
 import Colors from '../../utils/Colors';
 import { CustomButton } from './components';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export function HomeScreen(props) {
     const isDarkMode = useColorScheme() === 'dark';
@@ -16,7 +17,20 @@ export function HomeScreen(props) {
     return (
         <SafeAreaView style={containerStyle}>
             <Text style={styles.title}>HomeScreen</Text>
-            <CustomButton navigation={props.navigation} />
+            <TouchableOpacity
+                onPress={() => { props.navigation.navigate('Publish') }}
+            >
+                <Text>
+                    Go to PublishScreen
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => { props.navigation.navigate('Search') }}
+            >
+                <Text>
+                    Go to SearchScreen
+                </Text>
+            </TouchableOpacity>
         </SafeAreaView>
     );
 }
