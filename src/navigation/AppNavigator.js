@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useSelector } from 'react-redux';
-import { NavigationContainer } from '@react-navigation/native';
-import { navigationRef } from './SupportNavigator';
-import { TabNavigator, IntroStackScreen, AuthStackScreen } from './RootNavigator';
+import {useSelector} from 'react-redux';
+import {NavigationContainer} from '@react-navigation/native';
+import {navigationRef} from './SupportNavigator';
+import {TabNavigator, IntroStackScreen} from './RootNavigator';
 //Deep Link
-import { Linking } from 'react-native';
-import { urlRedirect } from '../utils/Tools';
+import {Linking} from 'react-native';
+import {urlRedirect} from '../utils/Tools';
+import {HomeStackScreen} from './RootNavigator';
 
 export const AppNavigator = () => {
-  const isFirstOpen = useSelector((state) => state.post.isFirstOpen);
+  const isFirstOpen = useSelector(state => state.post.isFirstOpen);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   useEffect(() => {
     Linking.addEventListener(
       'url',
-      (event) => {
+      event => {
         urlRedirect(event.url);
       },
       [urlRedirect],
@@ -29,10 +31,8 @@ export const AppNavigator = () => {
   }, []);
   return (
     <NavigationContainer ref={navigationRef}>
-      {/* <AuthStackScreen /> */}
+      {/* {isLoggedIn && <AuthStackScreen />} */}
       <TabNavigator />
-      {/* {isFirstOpen && <IntroStackScreen />}
-      {!isFirstOpen && <TabNavigator />} */}
     </NavigationContainer>
   );
 };
