@@ -30,12 +30,12 @@ export default {
 		tight: "-0.025em",
 	},
 	spacing: {
-		xs: 4,
-		sm: 10,
-		md: 16,
-		lg: 20,
-		xl: 26,
-		xxl: 30,
+		xs: "0.25rem",
+		sm: "0.5rem",
+		md: "1rem",
+		lg: "1.5rem",
+		xl: "2rem",
+		xxl: "3rem",
 	},
 	borderRadius: {
 		sm: "0.25rem",

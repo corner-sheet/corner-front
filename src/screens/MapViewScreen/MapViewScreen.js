@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SafeAreaView, Text, StyleSheet, useColorScheme } from 'react-native';
 import Spacing from '../../utils/Spacing';
 import Colors from '../../utils/Colors';
-import { MapView } from './components';
+import { CustomButton } from './components';
 
 export function MapViewScreen() {
     const isDarkMode = useColorScheme() === 'dark';
@@ -15,7 +15,17 @@ export function MapViewScreen() {
     };
     return (
         <SafeAreaView style={containerStyle}>
-            <MapView />
+            <Text style={styles.title}>MapViewScreen</Text>
+            <CustomButton />
         </SafeAreaView>
     );
 }
+
+const styles = StyleSheet.create({
+    title: {
+        fontSize: Spacing.fontSize.md,
+        fontWeight: Spacing.fontWeight.bold,
+        textAlign: 'center',
+        marginVertical: Spacing.spacing.medium,
+    },
+});
