@@ -18,6 +18,33 @@ export function ProfileScreen() {
     return (
         <SafeAreaView style={containerStyle}>
             <Text style={styles.title}>ProfileScreen</Text>
+            <View style={{
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'white',
+                    padding: 10,
+                }}>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Ionic name="arrow-back" style={{fontSize: 20, color: 'black'}} />
+                    </TouchableOpacity>
+                    <View
+                    style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        width: '92%',
+                    }}>
+                    <Text style={{fontSize: 15, marginLeft: 10, fontWeight: 'bold'}}>
+                        {name}
+                    </Text>
+                    <Feather
+                        name="more-vertical"
+                        style={{fontSize: 20, color: 'black'}}
+                    />
+                    </View>
+                </View>
+            </View>
             <ProfileBody
             name="GoYounJung"
             accountName="goyoujung"
@@ -27,7 +54,7 @@ export function ProfileScreen() {
             post="100"
             />
             <ProfileButtons
-            id={0}
+            id={1}
             name="GoYounJung"
             accountName="goyoujung"
             profileImage={require('../../utils/images/profile.jpg')}
