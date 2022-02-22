@@ -13,10 +13,37 @@ export function SignUpScreen() {
         marginHorizontal: Spacing.spacing.medium,
         backgroundColor: isDarkMode ? Colors.modes.dark.background : Colors.background,
     };
+    const [text, onChangeText] = React.useState(null);
+    const [number, onChangeNumber] = React.useState(null);
+    const [check_num, onChangeCheckNumber] = React.useState(null);
+
     return (
         <SafeAreaView style={containerStyle}>
             <Text style={styles.title}>SignUpScreen</Text>
             <CustomButton />
+            <TextInput
+                style={styles.input}
+                onChangeText={onChangeText}
+                value={text}
+                placeholder="새 이메일"
+                keyboardType="email-address"
+            />
+            <TextInput
+                style={styles.input}
+                onChangeText={onChangeNumber}
+                value={number}
+                placeholder="새 비밀번호"
+                keyboardType="numeric"
+                secureTextEntry="true"
+            />
+            <TextInput
+                style={styles.input}
+                onChangeText={onChangeCheckNumber}
+                value={check_num}
+                placeholder="새 비밀번호 확인"
+                keyboardType="numeric"
+                secureTextEntry="true"
+            />
         </SafeAreaView>
     );
 }
