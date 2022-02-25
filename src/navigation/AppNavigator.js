@@ -1,13 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useSelector} from 'react-redux';
-import {NavigationContainer} from '@react-navigation/native';
-import {navigationRef} from './SupportNavigator';
-import {TabNavigator, IntroStackScreen} from './RootNavigator';
+import { useSelector } from 'react-redux';
+import { NavigationContainer } from '@react-navigation/native';
+import { navigationRef } from './SupportNavigator';
+import { TabNavigator, } from './RootNavigator';
 //Deep Link
-import {Linking} from 'react-native';
-import {urlRedirect} from '../utils/Tools';
-import {HomeStackScreen} from './RootNavigator';
+import { Linking } from 'react-native';
+import { urlRedirect } from '../utils/Tools';
 
 export const AppNavigator = () => {
   const isFirstOpen = useSelector(state => state.post.isFirstOpen);
