@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { SafeAreaView, Text, StyleSheet, useColorScheme } from 'react-native';
+import { SafeAreaView, useColorScheme } from 'react-native';
+import { useSelector } from 'react-redux';
 import Spacing from '../../utils/Spacing';
 import Colors from '../../utils/Colors';
-import { CustomButton } from './components';
+import { MapView } from './components';
 
-export function MapViewScreen() {
+export function MapViewScreen(props) {
     const isDarkMode = useColorScheme() === 'dark';
     const containerStyle = {
         flex: 1,
@@ -13,19 +14,10 @@ export function MapViewScreen() {
         marginHorizontal: Spacing.spacing.medium,
         backgroundColor: isDarkMode ? Colors.modes.dark.background : Colors.background,
     };
+    const search = useSelector(state => state.search);
     return (
         <SafeAreaView style={containerStyle}>
-            <Text style={styles.title}>MapViewScreen</Text>
-            <CustomButton />
+            <MapView search={search} navigation={props.navigation} />
         </SafeAreaView>
     );
 }
-
-const styles = StyleSheet.create({
-    title: {
-        fontSize: Spacing.fontSize.md,
-        fontWeight: Spacing.fontWeight.bold,
-        textAlign: 'center',
-        marginVertical: Spacing.spacing.medium,
-    },
-});

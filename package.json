@@ -10,20 +10,28 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@actbase/react-daum-postcode": "^1.0.3",
     "@react-native-async-storage/async-storage": "^1.16.1",
     "@react-navigation/material-bottom-tabs": "^6.1.1",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/stack": "^6.1.1",
+    "native-base": "^3.3.7",
     "react": "17.0.2",
     "react-native": "0.67.2",
     "react-native-gesture-handler": "^2.2.0",
+    "react-native-image-picker": "^4.7.3",
+    "react-native-nmap": "^0.0.66",
     "react-native-paper": "^4.11.2",
-    "react-native-safe-area-context": "^3.3.2",
+    "react-native-safe-area-context": "^3.4.1",
     "react-native-screens": "^3.11.0",
+    "react-native-svg": "^12.1.1",
     "react-native-vector-icons": "^9.0.0",
+    "react-native-webview": "^11.17.2",
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
-    "redux-form": "^8.3.8"
+    "redux-devtools-extension": "^2.13.9",
+    "redux-form": "^8.3.8",
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

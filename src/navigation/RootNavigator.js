@@ -1,22 +1,22 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
-import {createStackNavigator} from '@react-navigation/stack';
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import { useSelector } from 'react-redux';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Colors from '../utils/Colors';
-import {IntroScreen} from '../screens/IntroScreen';
-import {SignUpScreen} from '../screens/SignUpScreen';
-import {LoginScreen} from '../screens/LoginScreen';
-import {HomeScreen} from '../screens/HomeScreen';
-import {SelectFavoriteMoodScreen} from '../screens/SelectFavoriteMoodScreen';
-import {LikeScreen} from '../screens/LikeScreen';
-import {PostScreen} from '../screens/PostScreen';
-import {DetailScreen} from '../screens/DetailScreen';
-import {SearchScreen} from '../screens/SearchScreen';
-import {MapViewScreen} from '../screens/MapViewScreen';
-import {PublishScreen} from '../screens/PublishScreen';
-import {TmapScreen} from '../screens/TmapScreen';
-import {ProfileScreen, EditProfileScreen} from '../screens/ProfileScreen';
+import { IntroScreen } from '../screens/IntroScreen';
+import { SignUpScreen } from '../screens/SignUpScreen';
+import { LoginScreen } from '../screens/LoginScreen';
+import { HomeScreen } from '../screens/HomeScreen';
+import { SelectFavoriteMoodScreen } from '../screens/SelectFavoriteMoodScreen';
+import { LikeScreen } from '../screens/LikeScreen';
+import { PostScreen } from '../screens/PostScreen';
+import { DetailScreen } from '../screens/DetailScreen';
+import { SearchScreen } from '../screens/SearchScreen';
+import { MapViewScreen } from '../screens/MapViewScreen';
+import { PublishScreen } from '../screens/PublishScreen';
+import { TmapScreen } from '../screens/TmapScreen';
+import { ProfileScreen, EditProfileScreen } from '../screens/ProfileScreen';
 
 const IntroStack = createStackNavigator();
 export const IntroStackScreen = () => (
@@ -24,7 +24,7 @@ export const IntroStackScreen = () => (
     <IntroStack.Screen
       name="Intro"
       component={IntroScreen}
-      options={{headerShown: false}}
+      options={{ headerShown: false }}
     />
   </IntroStack.Navigator>
 );
@@ -47,7 +47,7 @@ export const TmapStackScreen = () => (
     <TmapStack.Screen
       name="Tmap"
       component={TmapScreen}
-      options={{headerShown: false}}
+      options={{ headerShown: false }}
     />
     <TmapStack.Screen name="Post" component={PostStackScreen} />
   </TmapStack.Navigator>
@@ -122,8 +122,8 @@ export const TabNavigator = () => {
   const likes = useSelector(state => state.like.likedItems);
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({focused}) => {
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused }) => {
           let iconName;
           let size = 26;
           const color = focused ? Colors.accent : Colors.grey;
