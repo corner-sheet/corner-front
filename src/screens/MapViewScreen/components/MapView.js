@@ -41,7 +41,7 @@ export const MapView = ({ navigation, search }) => {
         <Postcode
           style={{ width: '100%', height: '100%' }}
           onSelected={(data) => {
-            geocode(data.address);
+            dispatch(geocode(data.address));
             setModal(false);
           }}
         />

@@ -8,12 +8,13 @@ export const SEARCH_GEOCODE = 'SEARCH_GEOCODE';
 export const SEARCH_REVERSE_GEOCODE = 'SEARCH_REVERSE_GEOCODE';
 
 export const geocode = (keyword) => {
-	return async (dispatch, getState) => {
-		const user = getState().auth.user;
+	console.log('keyword', keyword);
+	return async (dispatch) => {
 		dispatch({
 			type: SEARCH_LOADING,
 		});
 		try {
+			console.log('hahaha')
 			const response = await timeoutPromise(
 				fetch(`https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=${keyword}`,
 					{
@@ -27,21 +28,26 @@ export const geocode = (keyword) => {
 					})
 			);
 			if (!response.ok) {
+				dispatch({
+					type: SEARCH_FAILURE,
+				});
 				throw new Error("geocoding을 실패했습니다.");
 			}
 			const resData = await response.json();
-			dispatch({
+			console.log('resData');
+			console.log('wpwww', resData);
+			await dispatch({
 				type: SEARCH_GEOCODE,
-				latitude: resData.addresses[0].y,
-				longitude: resData.addresses[0].x,
-				roadAddress: resData.addresses[0].roadAddress,
+				latitude: parseFloat(resData.addresses[0].y),
+				longitude: parseFloat(resData.addresses[0].x),
+				roadAddress: keyword,
 				alias: "",
 			});
-			dispatch({
+			await dispatch({
 				type: SEARCH_ADD,
-				latitude: resData.addresses[0].y,
-				longitude: resData.addresses[0].x,
-				roadAddress: resData.addresses[0].roadAddress,
+				latitude: parseFloat(resData.addresses[0].y),
+				longitude: parseFloat(resData.addresses[0].x),
+				roadAddress: keyword,
 				alias: "",
 			});
 		} catch (err) {
@@ -77,13 +83,11 @@ export const reverseGeocode = (location) => {
 				throw new Error("reverse geocoding을 실패했습니다.");
 			}
 			const resData = await response.json();
-			console.log(resData.results[0]);
 			let address = await resData.results[0].region.area1.name + ' '
 				+ resData.results[0].region.area2.name + ' '
 				+ resData.results[0].land.name + ' '
 				+ resData.results[0].land.number1 + ' '
 				+ resData.results[0].land.addition0.value;
-			console.log('address', address)
 			await dispatch({
 				type: SEARCH_REVERSE_GEOCODE,
 				latitude: latitude,

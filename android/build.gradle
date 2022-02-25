@@ -29,9 +29,6 @@ allprojects {
             // Android JSC is installed from npm
             url("$rootDir/../node_modules/jsc-android/dist")
         }
-        maven {
-            url 'https://naver.jfrog.io/artifactory/maven/'
-        }
         mavenCentral {
             // We don't want to fetch react-native from Maven Central as there are
             // older versions over there.
@@ -41,5 +38,9 @@ allprojects {
         }
         google()
         maven { url 'https://www.jitpack.io' }
+        // 네이버 지도 저장소
+        maven {
+            url 'https://naver.jfrog.io/artifactory/maven/'
+        }
     }
 }

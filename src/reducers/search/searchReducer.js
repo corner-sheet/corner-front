@@ -25,6 +25,7 @@ export const searchReducer = (state = initialState, action) => {
 				isLoading: true,
 			};
 		case SEARCH_GEOCODE:
+			console.log('action', action);
 			return {
 				...state,
 				current: {
