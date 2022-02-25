@@ -5,6 +5,9 @@ export const POST_LOADING = "POST_LOADING";
 export const POST_FAILURE = "POST_FAILURE";
 export const ADD_POST = "ADD_POST";
 export const REMOVE_POST = "REMOVE_POST";
+export const ADD_PHOTOS = "ADD_PHOTOS";
+export const REMOVE_PHOTO = "REMOVE_PHOTO";
+export const EDIT_POST = "EDIT_POST";
 
 export const fetchPost = () => {
 	return async (dispatch, getState) => {
@@ -116,3 +119,30 @@ export const removePost = (id) => {
 		}
 	};
 };
+
+export const addPhotos = ({ assets }) => {
+	return async (dispatch) => {
+		let photoList = [];
+		assets.forEach((photo) => {
+			photoList.push({
+				fileName: photo?.fileName,
+				fileSize: photo?.fileSize,
+				height: photo?.height,
+				type: photo?.type,
+				width: photo?.width,
+				uri: photo?.uri,
+			});
+		});
+		await dispatch({
+			type: ADD_PHOTOS,
+			photos: photoList,
+		});
+	}
+};
+
+export const removePhoto = (index) => {
+	return {
+		type: REMOVE_PHOTO,
+		index,
+	}
+}

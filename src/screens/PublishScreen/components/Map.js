@@ -1,116 +1,59 @@
-import React, { useState } from 'react';
-import Spacing from '../../../utils/Spacing';
+import React from 'react';
 import Colors from '../../../utils/Colors';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { removeRecentSearch } from '../../../reducers';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import NaverMapView from "react-native-nmap";
+import { VStack, Text, HStack } from 'native-base';
+import { useDispatch } from 'react-redux';
+import NaverMapView, { Marker } from 'react-native-nmap';
 
-function MyMap(navigation) {
-    const P0 = { latitude: 37.564362, longitude: 126.977011 };
+export const Map = ({ navigation, search }) => {
+    const recentSearch = search.recent;
+    const { longitude, latitude, roadAddress } = search.current;
+    const dispatch = useDispatch();
     return (
-        <NaverMapView style={{ width: '100%', height: '100%' }}
-            showsMyLocationButton={false}
-            center={{ ...P0, zoom: 10 }}
-            onTouch={() => navigation.navigate('MapView')}
-            onMapClick={() => navigation.navigate('MapView')}>
-        </NaverMapView>
-    );
-}
-
-export const Map = ({ navigation }) => {
-    return (
-        <View style={styles.container}>
-            {FindFromMap(navigation)}
-            <View style={styles.item}>
-                {MyMap(navigation)}
-            </View>
-            <RecentSearch />
-        </View>
+        <VStack space={2}>
+            <TouchableOpacity onPress={() => navigation.navigate('MapView')}>
+                <HStack space={1}>
+                    <Ionicons name='locate-outline' size={18} color='black' />
+                    {roadAddress
+                        ? <Text fontSize="sm">{roadAddress}</Text>
+                        : <Text fontSize="sm">지도에서 찾아보기</Text>
+                    }
+                    <Ionicons name='chevron-forward-outline' size={16} color={Colors.grey} />
+                </HStack>
+            </TouchableOpacity>
+            <NaverMapView
+                style={styles.map}
+                showsMyLocationButton={false}
+                center={{ ...{ latitude: search.current.latitude, longitude: search.current.longitude }, zoom: 16 }}
+                onTouch={() => navigation.navigate('MapView')}
+                onMapClick={() => navigation.navigate('MapView')}>
+                <Marker coordinate={{ latitude, longitude }} pinColor="red" />
+            </NaverMapView>
+            <VStack space={2}>
+                <Text fontSize="xs">최근</Text>
+                {recentSearch.length === 0 ?
+                    <Text fontSize="sm">검색 기록이 없습니다.</Text>
+                    :
+                    recentSearch.map((item, index) => (
+                        <HStack space={1}>
+                            <Ionicons name='location-sharp' size={14} color='black' />
+                            <Text fontSize="sm">{item.roadAddress}</Text>
+                            <TouchableOpacity onPress={() => dispatch(removeRecentSearch(index))}>
+                                <Ionicons name='close' size={14} color='black' />
+                            </TouchableOpacity>
+                        </HStack>
+                    ))}
+            </VStack>
+        </VStack >
     );
 };
 
-function FindFromMap(navigation) {
-    return (
-        <TouchableOpacity style={styles.row}
-            onPress={() => navigation.navigate('MapView')}>
-            <View style={styles.iconWithText}>
-                <Ionicons name='locate-outline' size={18} color='black' />
-                <Text style={styles.mapText}>지도에서 찾아보기</Text>
-            </View>
-            <Ionicons name='chevron-forward-outline' size={16} color={Colors.grey} />
-        </TouchableOpacity>
-    );
-}
-
-const RecentSearch = () => {
-    const [recentSearch, setRecentSearch] = useState(
-        ['서울특별시 용산구 이태원동 210-65', '서울시 종로구 종로', '부산광역시 남구']
-    );
-
-    function removeRecentSearch(index) {
-        const newRecentSearch = [...recentSearch];
-        newRecentSearch.splice(index, 1);
-        setRecentSearch(newRecentSearch);
-    }
-
-    return (
-        <>
-            <Text style={styles.recentSearchText}>최근</Text>
-            {recentSearch.length === 0 ?
-                <Text style={styles.recentSearchItemText}>최근 검색어가 없습니다.</Text>
-                :
-                recentSearch.map((item, index) => (
-                    <View style={styles.row}>
-                        <View style={styles.iconWithText} key={index}>
-                            <Ionicons name='location-sharp' size={14} color='black' />
-                            <Text style={styles.recentSearchItemText}>{item}</Text>
-                        </View>
-                        <TouchableOpacity onPress={() => removeRecentSearch(index)}>
-                            <Ionicons name='close' size={14} color='black' />
-                        </TouchableOpacity>
-                    </View>
-                ))}
-        </>
-    );
-}
-
 const styles = StyleSheet.create({
-    container: {
-        marginRight: Spacing.spacing.sm,
-        marginTop: Spacing.spacing.sm,
-        marginBottom: Spacing.spacing.xs,
-        marginLeft: Spacing.spacing.md,
-    },
-    row: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginLeft: Spacing.spacing.md,
-        marginBottom: Spacing.spacing.sm,
-    },
-    iconWithText: {
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    mapText: {
-        fontSize: Spacing.fontSize.sm,
-        fontWeight: Spacing.fontWeight.medium,
-        color: Colors.articleText,
-    },
-    recentSearchText: {
-        fontSize: Spacing.fontSize.xs,
-        fontWeight: Spacing.fontWeight.light,
-        color: Colors.grey,
-        marginBottom: Spacing.spacing.sm,
-    },
-    recentSearchItemText: {
-        fontSize: Spacing.fontSize.sm,
-        fontWeight: Spacing.fontWeight.light,
-        color: Colors.articleText,
-    },
-    item: {
+    map: {
         width: '100%',
-        height: 100,
-        marginBottom: Spacing.spacing.md,
+        alignSelf: 'center',
+        height: 120,
     },
 });
