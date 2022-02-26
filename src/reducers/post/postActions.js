@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { API_URL } from "../../utils/Config";
 import { timeoutPromise } from "../../utils/Tools";
 export const FETCH_POSTS = "FETCH_POSTS";
@@ -9,65 +10,63 @@ export const ADD_PHOTOS = "ADD_PHOTOS";
 export const REMOVE_PHOTO = "REMOVE_PHOTO";
 export const EDIT_POST = "EDIT_POST";
 
-export const fetchPost = () => {
-	return async (dispatch, getState) => {
-		const user = getState().auth.user;
-		if (user.userid != undefined) {
-			dispatch({
-				type: POST_LOADING,
-			});
-			try {
-				const response = await timeoutPromise(
-					fetch(`${API_URL}/postList`, {
-						headers: {
-							Accept: "application/json",
-							"Content-Type": "application/json",
-						},
-						method: "GET",
-					})
-				);
-				if (!response.ok) {
-					dispatch({
-						type: POST_FAILURE,
-					});
-					throw new Error("게시글 불러오기를 실패했습니다.");
-				}
-				const resData = await response.json();
-
+export const fetchPost = (id) => {
+	return async (dispatch) => {
+		dispatch({
+			type: POST_LOADING,
+		});
+		try {
+			const response = await timeoutPromise(
+				fetch(`${API_URL}/posts/${id}`, {
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json",
+					},
+					method: "GET",
+				})
+			);
+			if (!response.ok) {
 				dispatch({
-					type: FETCH_POSTS,
-					postList: resData,
+					type: POST_FAILURE,
 				});
-			} catch (err) {
-				throw err;
+				throw new Error("게시글 불러오기를 실패했습니다.");
 			}
+			const resData = await response.json();
+			console.log('resData', resData);
+			dispatch({
+				type: FETCH_POSTS,
+				posts: resData,
+			});
+		} catch (err) {
+			throw err;
 		}
 		return;
 	};
 };
-//Add post
-export const addPost = (item) => {
+
+export const addPost = () => {
 	return async (dispatch, getState) => {
 		dispatch({
 			type: POST_LOADING,
 		});
+		const draft = useSelector((state) => state.post.draft);
+		const location = useSelector((state) => state.search.current);
 		const user = getState().auth.user;
+		const post = {
+			userId: user.userid,
+			image: draft.photos.map((photo) => photo.uri),
+			description: draft.description,
+			location: location,
+		};
 		try {
 			const response = await timeoutPromise(
-				fetch(`${API_URL}/postList/post`, {
+				fetch(`${API_URL}/posts`, {
 					headers: {
 						Accept: "application/json",
 						"Content-Type": "application/json",
 					},
 					method: "POST",
-					body: JSON.stringify({
-						userId: user.userid,
-						items: [
-							{
-								item: item._id,
-							},
-						],
-					}),
+					body: JSON.stringify(post),
 				})
 			);
 			if (!response.ok) {
@@ -78,13 +77,14 @@ export const addPost = (item) => {
 			}
 			dispatch({
 				type: ADD_POST,
-				addItem: item,
+				post,
 			});
 		} catch (err) {
 			throw err;
 		}
 	};
 };
+
 export const removePost = (id) => {
 	return async (dispatch, getState) => {
 		dispatch({

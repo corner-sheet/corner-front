@@ -20,7 +20,8 @@ const initialState = {
 			type: "",
 			width: 0,
 			uri: "",
-		},]
+		},],
+		description: "",
 	},
 	isFirstOpen: false,
 	isLoading: false,
@@ -66,6 +67,22 @@ export const postReducer = (state = initialState, action) => {
 					photos: state.draft.photos.filter(
 						(photo, index) => index !== action.index
 					),
+				},
+			};
+		case ADD_POST:
+			return {
+				...state,
+				posts: [...state.posts, action.post],
+				draft: {
+					image: [{
+						fileName: "",
+						fileSize: 0,
+						height: 0,
+						type: "",
+						width: 0,
+						uri: "",
+					},],
+					description: "",
 				},
 			};
 		default:

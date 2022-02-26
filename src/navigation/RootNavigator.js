@@ -17,6 +17,9 @@ import { MapViewScreen } from '../screens/MapViewScreen';
 import { PublishScreen } from '../screens/PublishScreen';
 import { TmapScreen } from '../screens/TmapScreen';
 import { ProfileScreen, EditProfileScreen } from '../screens/ProfileScreen';
+import { Button, IconButton } from 'native-base';
+import { addPost } from '../reducers';
+import { useDispatch } from 'react-redux';
 
 const IntroStack = createStackNavigator();
 export const IntroStackScreen = () => (
@@ -106,15 +109,27 @@ export const ProfileStackScreen = () => (
 );
 
 const HomeStack = createStackNavigator();
-export const HomeStackScreen = () => (
-  <HomeStack.Navigator>
-    <HomeStack.Screen name="Home" component={HomeScreen} />
-    <HomeStack.Screen name="Publish" component={PublishScreen} />
-    <HomeStack.Screen name="Detail" component={DetailScreen} />
-    <HomeStack.Screen name="MapView" component={MapViewScreen} />
-    <HomeStack.Screen name="Post" component={PostStackScreen} />
-  </HomeStack.Navigator>
-);
+export const HomeStackScreen = () => {
+  const dispatch = useDispatch();
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen name="Home" component={HomeScreen} />
+      <HomeStack.Screen
+        name="Publish"
+        component={PublishScreen}
+        options={{
+          headerTitle: '',
+          headerRight: () => (
+            <Button size="md" colorScheme='gray' marginRight="2" onPress={() => dispatch(addPost())}>공유</Button>
+          ),
+        }}
+      />
+      <HomeStack.Screen name="Detail" component={DetailScreen} />
+      <HomeStack.Screen name="MapView" component={MapViewScreen} />
+      <HomeStack.Screen name="Post" component={PostStackScreen} />
+    </HomeStack.Navigator>
+  );
+};
 
 const Tab = createMaterialBottomTabNavigator();
 
