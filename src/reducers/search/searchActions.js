@@ -83,11 +83,15 @@ export const reverseGeocode = (location) => {
 				throw new Error("reverse geocoding을 실패했습니다.");
 			}
 			const resData = await response.json();
-			let address = await resData.results[0].region.area1.name + ' '
-				+ resData.results[0].region.area2.name + ' '
-				+ resData.results[0].land.name + ' '
-				+ resData.results[0].land.number1 + ' '
-				+ resData.results[0].land.addition0.value;
+			let address;
+			if (resData.results.length === 0)
+				address = "";
+			else
+				address = await resData.results[0].region.area1.name + ' '
+					+ resData.results[0].region.area2.name + ' '
+					+ resData.results[0].land.name + ' '
+					+ resData.results[0].land.number1 + ' '
+					+ resData.results[0].land.addition0.value;
 			await dispatch({
 				type: SEARCH_REVERSE_GEOCODE,
 				latitude: latitude,
