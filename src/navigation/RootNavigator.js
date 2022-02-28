@@ -1,25 +1,28 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import {useSelector} from 'react-redux';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Colors from '../utils/Colors';
-import { IntroScreen } from '../screens/IntroScreen';
-import { SignUpScreen } from '../screens/SignUpScreen';
-import { LoginScreen } from '../screens/LoginScreen';
-import { HomeScreen } from '../screens/HomeScreen';
-import { SelectFavoriteMoodScreen } from '../screens/SelectFavoriteMoodScreen';
-import { LikeScreen } from '../screens/LikeScreen';
-import { PostScreen } from '../screens/PostScreen';
-import { DetailScreen } from '../screens/DetailScreen';
-import { SearchScreen } from '../screens/SearchScreen';
-import { MapViewScreen } from '../screens/MapViewScreen';
-import { PublishScreen } from '../screens/PublishScreen';
-import { TmapScreen } from '../screens/TmapScreen';
-import { ProfileScreen, EditProfileScreen } from '../screens/ProfileScreen';
-import { Button, IconButton } from 'native-base';
-import { addPost } from '../reducers';
-import { useDispatch } from 'react-redux';
+import {IntroScreen} from '../screens/IntroScreen';
+import {SignUpScreen} from '../screens/SignUpScreen';
+import {LoginScreen} from '../screens/LoginScreen';
+import {HomeScreen} from '../screens/HomeScreen';
+import {SelectFavoriteMoodScreen} from '../screens/SelectFavoriteMoodScreen';
+import {LikeScreen} from '../screens/LikeScreen';
+import {PostScreen} from '../screens/PostScreen';
+import {DetailScreen} from '../screens/DetailScreen';
+import {SearchScreen} from '../screens/SearchScreen';
+import {MapViewScreen} from '../screens/MapViewScreen';
+import {PublishScreen} from '../screens/PublishScreen';
+import {TmapScreen} from '../screens/TmapScreen';
+import {ProfileScreen, EditProfileScreen} from '../screens/ProfileScreen';
+import {AlertScreen} from '../screens/AlertScreen';
+import {Button, IconButton} from 'native-base';
+import {addPost} from '../reducers';
+import {useDispatch} from 'react-redux';
+import {CommentScreen} from '../screens/CommentScreen';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 
 const IntroStack = createStackNavigator();
 export const IntroStackScreen = () => (
@@ -27,7 +30,7 @@ export const IntroStackScreen = () => (
     <IntroStack.Screen
       name="Intro"
       component={IntroScreen}
-      options={{ headerShown: false }}
+      options={{headerShown: false}}
     />
   </IntroStack.Navigator>
 );
@@ -50,7 +53,7 @@ export const TmapStackScreen = () => (
     <TmapStack.Screen
       name="Tmap"
       component={TmapScreen}
-      options={{ headerShown: false }}
+      options={{headerShown: false}}
     />
     <TmapStack.Screen name="Post" component={PostStackScreen} />
   </TmapStack.Navigator>
@@ -109,27 +112,66 @@ export const ProfileStackScreen = () => (
 );
 
 const HomeStack = createStackNavigator();
-export const HomeStackScreen = () => {
-  const dispatch = useDispatch();
-  return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen
-        name="Publish"
-        component={PublishScreen}
-        options={{
-          headerTitle: '',
-          headerRight: () => (
-            <Button size="md" colorScheme='gray' marginRight="2" onPress={() => dispatch(addPost())}>공유</Button>
-          ),
-        }}
-      />
-      <HomeStack.Screen name="Detail" component={DetailScreen} />
-      <HomeStack.Screen name="MapView" component={MapViewScreen} />
-      <HomeStack.Screen name="Post" component={PostStackScreen} />
-    </HomeStack.Navigator>
-  );
-};
+export const HomeStackScreen = props => (
+  <HomeStack.Navigator initialRouteName="Home">
+    <HomeStack.Screen
+      name="Home"
+      component={HomeScreen}
+      options={{
+        headerTitle: () => (
+          <View>
+            <Text>photo spot</Text>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={{marginLeft: 20}}>
+            <TouchableOpacity onPress={() => {}}>
+              <MaterialCommunityIcons
+                name="menu"
+                size={26}
+                color={Colors.black}
+              />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerRight: () => (
+          <View
+            style={{
+              flex: 1,
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginRight: 20,
+            }}>
+            <TouchableOpacity
+              onPress={() => {
+                props.navigation.navigate('Alert');
+              }}>
+              <MaterialCommunityIcons
+                name="bell-outline"
+                size={26}
+                color={Colors.black}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {}}>
+              <MaterialCommunityIcons
+                name="plus"
+                size={26}
+                color={Colors.black}
+              />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitleAlign: 'center',
+      }}
+    />
+    <HomeStack.Screen name="Alert" component={AlertScreen} />
+    <HomeStack.Screen name="Detail" component={DetailScreen} />
+    <HomeStack.Screen name="Comment" component={CommentScreen} />
+    <HomeStack.Screen name="MapView" component={MapViewScreen} />
+    <HomeStack.Screen name="Search" component={SearchScreen} />
+    <HomeStack.Screen name="Post" component={PostStackScreen} />
+  </HomeStack.Navigator>
+);
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -137,8 +179,8 @@ export const TabNavigator = () => {
   const likes = useSelector(state => state.like.likedItems);
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused }) => {
+      screenOptions={({route}) => ({
+        tabBarIcon: ({focused}) => {
           let iconName;
           let size = 26;
           const color = focused ? Colors.accent : Colors.grey;
