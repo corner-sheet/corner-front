@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useRef, useState} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -8,13 +8,21 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  Share,
+  ImageBackground,
+  Animated,
+  TouchableWithoutFeedback,
+  Easing,
 } from 'react-native';
+import {SliderBox} from 'react-native-image-slider-box';
 import Spacing from '../../utils/Spacing';
 import Colors from '../../utils/Colors';
-import {CustomButton} from './components';
 import {FlatList} from 'react-native-gesture-handler';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Feather from 'react-native-vector-icons/Feather';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export function DetailScreen({route}) {
+export function DetailScreen(props) {
   const isDarkMode = useColorScheme() === 'dark';
   const containerStyle = {
     flex: 1,
@@ -25,117 +33,20 @@ export function DetailScreen({route}) {
       ? Colors.modes.dark.background
       : Colors.background,
   };
-  let data = [
-    {
-      key: '1',
-      src: require('../../assets/1.png'),
-      likes: '10',
-      description: '1게시글입니다',
-      comments: [
-        {
-          user: {
-            id: 1,
-            username: '울끈불끈 책상',
-          },
-          content: '그 사진 별로네요',
-          createdAt: Date.now(),
-          updatedAt: Date.now(),
-        },
-        {
-          user: {
-            id: 2,
-            username: '울끈불끈 책상',
-          },
-          content: '그 사진 별로네요',
-          createdAt: Date.now(),
-          updatedAt: Date.now(),
-        },
-      ],
-      location: '1서울시 영등포구',
-      detailLocation: '1서울시 영등포구 선유서로 21길 35',
-    },
-    {
-      key: '2',
-      src: require('../../assets/2.jpeg'),
-      likes: '12',
-      description: '2게시글입니다',
-      comments: [{1: '2첫번째 댓글'}, {2: '2두번째 댓글'}],
-      location: '2서울시 영등포구',
-      detailLocation: '2서울시 영등포구 선유서로 21길 35',
-    },
-    {
-      key: '3',
-      src: require('../../assets/3.jpeg'),
-      likes: '15',
-      description: '3게시글입니다',
-      comments: [{1: '3첫번째 댓글'}, {2: '3두번째 댓글'}],
-      location: '3서울시 영등포구',
-      detailLocation: '3서울시 영등포구 선유서로 21길 35',
-    },
-    {
-      key: '4',
-      src: require('../../assets/4.jpeg'),
-      likes: '16',
-      description: '4게시글입니다',
-      comments: [{1: '4첫번째 댓글'}, {2: '4두번째 댓글'}],
-      location: '4서울시 영등포구',
-      detailLocation: '4서울시 영등포구 선유서로 21길 35',
-    },
-    {
-      key: '5',
-      src: require('../../assets/5.jpeg'),
-      likes: '17',
-      description: '5게시글입니다',
-      comments: [{1: '5첫번째 댓글'}, {2: '5두번째 댓글'}],
-      location: '5서울시 영등포구',
-      detailLocation: '5서울시 영등포구 선유서로 21길 35',
-    },
-    {
-      key: '6',
-      src: require('../../assets/6.jpeg'),
-      likes: '26',
-      description: '6게시글입니다',
-      comments: [{1: '6첫번째 댓글'}, {2: '6두번째 댓글'}],
-      location: '6서울시 영등포구',
-      detailLocation: '6서울시 영등포구 선유서로 21길 35',
-    },
-    {
-      key: '7',
-      src: require('../../assets/7.jpeg'),
-      likes: '18',
-      description: '7게시글입니다',
-      comments: [{1: '7첫번째 댓글'}, {2: '7두번째 댓글'}],
-      location: '7서울시 영등포구',
-      detailLocation: '7서울시 영등포구 선유서로 21길 35',
-    },
-    {
-      key: '8',
-      src: require('../../assets/8.jpeg'),
-      likes: '19',
-      description: '8게시글입니다',
-      comments: [{1: '8첫번째 댓글'}, {2: '8두번째 댓글'}],
-      location: '8서울시 영등포구',
-      detailLocation: '8서울시 영등포구 선유서로 21길 35',
-    },
-  ];
-  const renderItem = ({item}) => (
-    <TouchableOpacity
-      onPress={() => {
-        props.navigation.navigate('Detail', {src: item.src});
-      }}>
-      <View style={{flex: 1, flexDirection: 'row'}}>
-        <Image
-          style={{width: 190, height: 300, margin: 1}}
-          resizeMode="cover"
-          source={item.src}
-        />
-      </View>
-    </TouchableOpacity>
-  );
+
+  const onShare = async () => {
+    const result = await Share.share({
+      message: '복사하기',
+    });
+  };
+  const [heart, setHeart] = useState(false);
+  const toggleHeart = () => {
+    setHeart(previousState => !previousState);
+  };
   return (
     <SafeAreaView style={containerStyle} style={{}}>
       <ScrollView style={{width: '100%'}}>
-        <View
+        {/* <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -148,16 +59,20 @@ export function DetailScreen({route}) {
             500m
           </Text>
           <TouchableOpacity onPress={() => {}}>
-            <Text style={{fontWeight: 'bold', color: 'lightgrey'}}>
-              이태원 경리단길
+            <Text style={{fontWeight: 'bold', color: 'grey'}}>
+              {route.params.item.location}
             </Text>
           </TouchableOpacity>
+        </View> */}
+        <View>
+          <SliderBox
+            images={props.route.params.item.src}
+            onCurrentImagePressd={index => {
+              alert(index);
+            }}
+            sliderBoxHeight={700}
+          />
         </View>
-        <Image
-          style={{width: 420, height: 600}}
-          resizeMode="cover"
-          source={route.params.item.src}
-        />
         <View style={{paddingHorizontal: 20}}>
           <View
             style={{
@@ -172,10 +87,62 @@ export function DetailScreen({route}) {
             style={{
               flexDirection: 'row',
               alignItems: 'center',
+              justifyContent: 'space-between',
               height: 52,
               marginBottom: 10,
             }}>
-            <Text>{route.params.item.likes}</Text>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <TouchableOpacity
+                onPress={() => {
+                  toggleHeart();
+                }}>
+                {heart ? (
+                  <MaterialCommunityIcons
+                    name="heart"
+                    size={26}
+                    color="#ee4757"
+                  />
+                ) : (
+                  <MaterialCommunityIcons
+                    name="heart-outline"
+                    size={26}
+                    color={Colors.black}
+                  />
+                )}
+              </TouchableOpacity>
+              <Text>{props.route.params.item.likes}</Text>
+            </View>
+            <View style={{flexDirection: 'row'}}>
+              <TouchableOpacity
+                onPress={() => {
+                  props.navigation.navigate('Comment', {
+                    item: props.route.params.item,
+                  });
+                }}>
+                <Ionicons
+                  name="chatbubble-outline"
+                  size={26}
+                  color={Colors.black}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{marginLeft: 10}}
+                onPress={() => onShare()}>
+                <Feather name="share" size={26} color={Colors.black} />
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+        <View style={{paddingHorizontal: 20}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              height: 52,
+              marginBottom: 10,
+            }}>
+            <Text>{props.route.params.item.description}</Text>
+            {/* <Text>작성일</Text> */}
           </View>
         </View>
       </ScrollView>

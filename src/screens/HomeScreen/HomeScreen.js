@@ -20,73 +20,237 @@ export function HomeScreen(props) {
   let data = [
     {
       key: '1',
-      src: require('../../assets/1.png'),
+      src: [
+        require('../../assets/1.png'),
+        require('../../assets/1.png'),
+        require('../../assets/1.png'),
+      ],
       likes: '10',
       description: '1게시글입니다',
-      comments: [{ 1: '1첫번째 댓글' }, { 2: '1두번째 댓글' }],
+      comments: [
+        {
+          user: {
+            id: 1,
+            username: '울끈불끈 책상 1',
+          },
+          content: '그 사진 별로네요 1',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+        {
+          user: {
+            id: 2,
+            username: '울끈불끈 의자 1',
+          },
+          content: '그 사진 좋아요 1',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ],
       location: '1서울시 영등포구',
       detailLocation: '1서울시 영등포구 선유서로 21길 35',
     },
     {
       key: '2',
-      src: require('../../assets/2.jpeg'),
+      src: [
+        require('../../assets/2.jpeg'),
+        require('../../assets/2.jpeg'),
+        require('../../assets/2.jpeg'),
+      ],
       likes: '12',
       description: '2게시글입니다',
-      comments: [{ 1: '2첫번째 댓글' }, { 2: '2두번째 댓글' }],
+      comments: [
+        {
+          user: {
+            id: 1,
+            username: '울끈불끈 책상 2',
+          },
+          content: '그 사진 별로네요 2',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+        {
+          user: {
+            id: 2,
+            username: '울끈불끈 의자 2',
+          },
+          content: '그 사진 좋아요 2',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ],
       location: '2서울시 영등포구',
       detailLocation: '2서울시 영등포구 선유서로 21길 35',
     },
     {
       key: '3',
-      src: require('../../assets/3.jpeg'),
+      src: [require('../../assets/3.jpeg'), require('../../assets/3.jpeg')],
       likes: '15',
       description: '3게시글입니다',
-      comments: [{ 1: '3첫번째 댓글' }, { 2: '3두번째 댓글' }],
+      comments: [
+        {
+          user: {
+            id: 1,
+            username: '울끈불끈 책상 3',
+          },
+          content: '그 사진 별로네요 3',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+        {
+          user: {
+            id: 2,
+            username: '울끈불끈 의자 3',
+          },
+          content: '그 사진 좋아요 3',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ],
       location: '3서울시 영등포구',
       detailLocation: '3서울시 영등포구 선유서로 21길 35',
     },
     {
       key: '4',
-      src: require('../../assets/4.jpeg'),
+      src: [require('../../assets/4.jpeg'), require('../../assets/4.jpeg')],
       likes: '16',
       description: '4게시글입니다',
-      comments: [{ 1: '4첫번째 댓글' }, { 2: '4두번째 댓글' }],
+      comments: [
+        {
+          user: {
+            id: 1,
+            username: '울끈불끈 책상 4',
+          },
+          content: '그 사진 별로네요 4',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+        {
+          user: {
+            id: 2,
+            username: '울끈불끈 의자 4',
+          },
+          content: '그 사진 좋아요 4',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ],
       location: '4서울시 영등포구',
       detailLocation: '4서울시 영등포구 선유서로 21길 35',
     },
     {
       key: '5',
-      src: require('../../assets/5.jpeg'),
+      src: [
+        require('../../assets/5.jpeg'),
+        require('../../assets/5.jpeg'),
+        require('../../assets/5.jpeg'),
+      ],
       likes: '17',
       description: '5게시글입니다',
-      comments: [{ 1: '5첫번째 댓글' }, { 2: '5두번째 댓글' }],
+      comments: [
+        {
+          user: {
+            id: 1,
+            username: '울끈불끈 책상 5',
+          },
+          content: '그 사진 별로네요 5',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+        {
+          user: {
+            id: 2,
+            username: '울끈불끈 의자 5',
+          },
+          content: '그 사진 좋아요 5',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ],
       location: '5서울시 영등포구',
       detailLocation: '5서울시 영등포구 선유서로 21길 35',
     },
     {
       key: '6',
-      src: require('../../assets/6.jpeg'),
+      src: [require('../../assets/6.jpeg'), require('../../assets/6.jpeg')],
       likes: '26',
       description: '6게시글입니다',
-      comments: [{ 1: '6첫번째 댓글' }, { 2: '6두번째 댓글' }],
+      comments: [
+        {
+          user: {
+            id: 1,
+            username: '울끈불끈 책상 6',
+          },
+          content: '그 사진 별로네요 6',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+        {
+          user: {
+            id: 2,
+            username: '울끈불끈 의자 6',
+          },
+          content: '그 사진 좋아요 6',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ],
       location: '6서울시 영등포구',
       detailLocation: '6서울시 영등포구 선유서로 21길 35',
     },
     {
       key: '7',
-      src: require('../../assets/7.jpeg'),
+      src: [require('../../assets/7.jpeg'), require('../../assets/7.jpeg')],
       likes: '18',
       description: '7게시글입니다',
-      comments: [{ 1: '7첫번째 댓글' }, { 2: '7두번째 댓글' }],
+      comments: [
+        {
+          user: {
+            id: 1,
+            username: '울끈불끈 책상 7',
+          },
+          content: '그 사진 별로네요 7',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+        {
+          user: {
+            id: 2,
+            username: '울끈불끈 의자7',
+          },
+          content: '그 사진 좋아요 7',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ],
       location: '7서울시 영등포구',
       detailLocation: '7서울시 영등포구 선유서로 21길 35',
     },
     {
       key: '8',
-      src: require('../../assets/8.jpeg'),
+      src: [require('../../assets/8.jpeg'), require('../../assets/8.jpeg')],
       likes: '19',
       description: '8게시글입니다',
-      comments: [{ 1: '8첫번째 댓글' }, { 2: '8두번째 댓글' }],
+      comments: [
+        {
+          user: {
+            id: 1,
+            username: '울끈불끈 책상 8',
+          },
+          content: '그 사진 별로네요 8',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+        {
+          user: {
+            id: 2,
+            username: '울끈불끈 의자 8',
+          },
+          content: '그 사진 좋아요 8',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ],
       location: '8서울시 영등포구',
       detailLocation: '8서울시 영등포구 선유서로 21길 35',
     },
@@ -105,13 +269,11 @@ export function HomeScreen(props) {
       onPress={() => {
         props.navigation.navigate('Detail', { item: item });
       }}>
-      <View style={{ flex: 1, flexDirection: 'row' }}>
-        <Image
-          style={{ width: 190, height: 300, margin: 1 }}
-          resizeMode="cover"
-          source={item.src}
-        />
-      </View>
+      <Image
+        style={{width: 190, height: 300, margin: 1}}
+        resizeMode="cover"
+        source={item.src[0]}
+      />
     </TouchableOpacity>
   );
 
@@ -186,8 +348,6 @@ export function HomeScreen(props) {
     </SafeAreaView>
   );
 }
-
-HomeScreen.defaultProps = {};
 
 const styles = StyleSheet.create({
   title: {
