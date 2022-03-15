@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, {useState, useLayoutEffect} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -10,10 +10,10 @@ import {
 } from 'react-native';
 import Spacing from '../../utils/Spacing';
 import Colors from '../../utils/Colors';
-import { CustomButton } from './components';
-import { TabNavigator } from '../../navigation/RootNavigator';
+import {CustomButton} from './components';
+import {TabNavigator} from '../../navigation/RootNavigator';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { FlatList } from 'react-native-gesture-handler';
+import {FlatList} from 'react-native-gesture-handler';
 
 export function HomeScreen(props) {
   const isDarkMode = useColorScheme() === 'dark';
@@ -36,6 +36,224 @@ export function HomeScreen(props) {
           content: '그 사진 별로네요 1',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 111',
+              },
+              content: '답글 123',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 112',
+              },
+              content: '답글 3',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 4',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 113',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 114',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 115',
+              },
+              content: '답글 3',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 116',
+              },
+              content: '답글 4',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 117',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 118',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 119',
+              },
+              content: '답글 3',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 120',
+              },
+              content: '답글 4',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 120',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 121',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 121',
+              },
+              content: '답글 3',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 4',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 122',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 123',
+              },
+              content: '답글 3',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 4',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 124',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 125',
+              },
+              content: '답글 3',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 4',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
         {
           user: {
@@ -45,6 +263,17 @@ export function HomeScreen(props) {
           content: '그 사진 좋아요 1',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 126',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
       ],
       location: '1서울시 영등포구',
@@ -68,6 +297,17 @@ export function HomeScreen(props) {
           content: '그 사진 별로네요 2',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 127',
+              },
+              content: '답글 12',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
         {
           user: {
@@ -77,6 +317,26 @@ export function HomeScreen(props) {
           content: '그 사진 좋아요 2',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 128',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
       ],
       location: '2서울시 영등포구',
@@ -96,6 +356,26 @@ export function HomeScreen(props) {
           content: '그 사진 별로네요 3',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 129',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 130',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
         {
           user: {
@@ -105,6 +385,17 @@ export function HomeScreen(props) {
           content: '그 사진 좋아요 3',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 131',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
       ],
       location: '3서울시 영등포구',
@@ -124,6 +415,26 @@ export function HomeScreen(props) {
           content: '그 사진 별로네요 4',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 132',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
         {
           user: {
@@ -133,6 +444,26 @@ export function HomeScreen(props) {
           content: '그 사진 좋아요 4',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 133',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
       ],
       location: '4서울시 영등포구',
@@ -156,6 +487,26 @@ export function HomeScreen(props) {
           content: '그 사진 별로네요 5',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 134',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
         {
           user: {
@@ -165,6 +516,17 @@ export function HomeScreen(props) {
           content: '그 사진 좋아요 5',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 135',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
       ],
       location: '5서울시 영등포구',
@@ -184,6 +546,26 @@ export function HomeScreen(props) {
           content: '그 사진 별로네요 6',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 136',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
         {
           user: {
@@ -193,6 +575,26 @@ export function HomeScreen(props) {
           content: '그 사진 좋아요 6',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 137',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
       ],
       location: '6서울시 영등포구',
@@ -212,6 +614,26 @@ export function HomeScreen(props) {
           content: '그 사진 별로네요 7',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 1381',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
         {
           user: {
@@ -221,6 +643,17 @@ export function HomeScreen(props) {
           content: '그 사진 좋아요 7',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 139',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
       ],
       location: '7서울시 영등포구',
@@ -240,6 +673,26 @@ export function HomeScreen(props) {
           content: '그 사진 별로네요 8',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 140',
+              },
+              content: '답글 12',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
         {
           user: {
@@ -249,6 +702,26 @@ export function HomeScreen(props) {
           content: '그 사진 좋아요 8',
           createdAt: Date.now(),
           updatedAt: Date.now(),
+          replyComment: [
+            {
+              user: {
+                id: 1,
+                username: '울끈불끈 책상 141',
+              },
+              content: '답글 1',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+            {
+              user: {
+                id: 2,
+                username: '울끈불끈 의자 11',
+              },
+              content: '답글 2',
+              createdAt: Date.now(),
+              updatedAt: Date.now(),
+            },
+          ],
         },
       ],
       location: '8서울시 영등포구',
@@ -264,10 +737,10 @@ export function HomeScreen(props) {
       ? Colors.modes.dark.background
       : Colors.background,
   };
-  const renderItem = ({ item }) => (
+  const renderItem = ({item}) => (
     <TouchableOpacity
       onPress={() => {
-        props.navigation.navigate('Detail', { item: item });
+        props.navigation.navigate('Detail', {item: item});
       }}>
       <Image
         style={{width: 190, height: 300, margin: 1}}
@@ -284,8 +757,8 @@ export function HomeScreen(props) {
   return (
     <SafeAreaView>
       <View
-        style={{ height: 68, paddingHorizontal: 20, backgroundColor: 'white' }}>
-        <View style={{ alignItems: 'center' }}>
+        style={{height: 68, paddingHorizontal: 20, backgroundColor: 'white'}}>
+        <View style={{alignItems: 'center'}}>
           <TouchableOpacity
             style={{
               backgroundColor: '#F5F5F5',
@@ -300,7 +773,7 @@ export function HomeScreen(props) {
               name="search"
               size={18}
               color={Colors.black}
-              style={{ marginLeft: 10 }}
+              style={{marginLeft: 10}}
             />
           </TouchableOpacity>
         </View>
@@ -310,15 +783,15 @@ export function HomeScreen(props) {
             flexDirection: 'row',
             marginTop: 10,
           }}>
-          <TouchableOpacity onPress={() => { }}>
-            <Text style={{ fontWeight: 'bold', color: 'lightgrey' }}>New</Text>
+          <TouchableOpacity onPress={() => {}}>
+            <Text style={{fontWeight: 'bold', color: 'lightgrey'}}>New</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
               sortHot();
             }}
-            style={{ marginLeft: 10 }}>
-            <Text style={{ fontWeight: 'bold', color: 'lightgrey' }}>Hot</Text>
+            style={{marginLeft: 10}}>
+            <Text style={{fontWeight: 'bold', color: 'lightgrey'}}>Hot</Text>
           </TouchableOpacity>
         </View>
       </View>
