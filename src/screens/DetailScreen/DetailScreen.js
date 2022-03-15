@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -21,8 +21,17 @@ import {FlatList} from 'react-native-gesture-handler';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useDispatch} from 'react-redux';
+import {fetchPost} from '../../reducers/post';
+import {useSelector} from 'react-redux';
 
 export function DetailScreen(props) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchPost('1'));
+  }, []);
+  const posts = useSelector(state => state.post.posts);
+
   const isDarkMode = useColorScheme() === 'dark';
   const containerStyle = {
     flex: 1,
@@ -142,9 +151,14 @@ export function DetailScreen(props) {
               marginBottom: 10,
             }}>
             <Text>{props.route.params.item.description}</Text>
-            {/* <Text>작성일</Text> */}
           </View>
         </View>
+        <TouchableOpacity
+          onPress={() => {
+            console.log({posts});
+          }}>
+          <Text>버튼</Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
